@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From My Heart ❤️</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fdf2f4 0%, #fbe8ec 50%, #f3e7f9 100%);
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ফ্লোটিং ব্যাকগ্রাউন্ড হার্ট */
+    .bg-heart {
+      position: fixed;
+      pointer-events: none;
+      animation: floatUp 8s linear infinite;
+      opacity: 0.35;
+      font-size: 20px;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(105vh) scale(0.6) rotate(0deg);
+        opacity: 0;
+      }
+      20% { opacity: 0.4; }
+      80% { opacity: 0.3; }
+      100% {
+        transform: translateY(-10vh) scale(1.1) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    /* মূল মোবাইল কার্ড কন্টেইনার */
+    .app-container {
+      width: 90%;
+      max-width: 380px;
+      min-height: 520px;
+      background: #ffffff;
+      border-radius: 36px;
+      box-shadow: 0 20px 45px rgba(220, 180, 200, 0.35),
+                  0 4px 15px rgba(0, 0, 0, 0.04);
+      padding: 24px 20px;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      transition: all 0.4s ease;
+    }
+
+    /* পেজ স্লাইড অ্যানিমেশন */
+    .screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      animation: fadeIn 0.45s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.96) translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* ফটো ফ্রেম (স্ক্রিন ১ এবং স্ক্রিন ২ এর জন্য) */
+    .photo-frame {
+      width: 100%;
+      height: 190px;
+      border-radius: 26px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+      padding: 10px;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .frame-pink {
+      background: linear-gradient(180deg, #ffeef2 0%, #ffd6e0 100%);
+    }
+
+    .frame-purple {
+      background: linear-gradient(180deg, #f2edfd 0%, #ded2fa 100%);
+    }
+
+    /* ফ্রেমের ভেতরের ছবি */
+    .user-img-large {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      border: 3px solid #ffffff;
+      animation: gentleZoom 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentleZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.02); }
+    }
+
+    /* ডেকোরেশন আইকন */
+    .decor-heart {
+      position: absolute;
+      font-size: 20px;
+      z-index: 2;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+      animation: pulse 1.8s infinite alternate;
+    }
+    .decor-1 { top: 14px; left: 16px; }
+    .decor-2 { top: 14px; right: 16px; }
+    .decor-flower-l { bottom: 14px; left: 16px; font-size: 18px; z-index: 2; }
+    .decor-flower-r { bottom: 14px; right: 16px; font-size: 18px; z-index: 2; }
+
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.15); opacity: 1; }
+    }
+
+    /* টাইটেল এবং টেক্সট */
+    .title-cursive {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #3b2c35;
+      margin-bottom: 8px;
+    }
+
+    .title-script {
+      font-family: 'Caveat', cursive;
+      font-size: 30px;
+      color: #3b2c35;
+      margin-bottom: 4px;
+    }
+
+    .subtitle-text {
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: #6d6268;
+      padding: 0 10px;
+      margin-bottom: 24px;
+    }
+
+    .instruction-text {
+      font-size: 13px;
+      color: #9c8e96;
+      margin-bottom: 18px;
+    }
+
+    /* বাটন স্টাইল */
+    .btn-next {
+      background: linear-gradient(135deg, #e4d7ee 0%, #d8c3ea 100%);
+      color: #4f3b5e;
+      border: none;
+      padding: 12px 34px;
+      border-radius: 25px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 16px rgba(189, 160, 216, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-next:active {
+      transform: scale(0.96);
+    }
+
+    /* স্ক্রিন ৩: তিনটি ট্যাব ক্যাপসুল */
+    .pill-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .pill-item {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 10px 18px;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all 0.35s ease;
+      position: relative;
+      user-select: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .pill-1 {
+      background: linear-gradient(90deg, #fce1d9 0%, #fedbd0 100%);
+      color: #664134;
+    }
+
+    .pill-2 {
+      background: linear-gradient(90deg, #fed7e5 0%, #fecde0 100%);
+      color: #6e334a;
+    }
+
+    .pill-3 {
+      background: linear-gradient(90deg, #eedafc 0%, #e2cbf8 100%);
+      color: #55326d;
+    }
+
+    .pill-item .heart-icon {
+      font-size: 20px;
+    }
+
+    .pill-item.revealed .heart-icon {
+      display: none;
+    }
+
+    .pill-item .secret-text {
+      display: none;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .pill-item.revealed .secret-text {
+      display: block;
+    }
+
+    /* স্ক্রিন ৪: ছবি ও চিঠি */
+    .avatar-pair {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .avatar-box {
+      width: 95px;
+      height: 95px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #f4edfb 0%, #ebe0f7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 15px rgba(180, 150, 200, 0.2);
+      overflow: hidden;
+      border: 2px solid #ffffff;
+    }
+
+    .avatar-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .tap-indicator {
+      font-size: 12px;
+      color: #a3959c;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .letter-card {
+      width: 100%;
+      background: #ffffff;
+      border: 1.5px solid #f3dbe3;
+      border-radius: 24px;
+      padding: 16px 18px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(230, 190, 205, 0.25);
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .letter-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: #3b2c35;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .letter-body {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #574b52;
+      text-align: left;
+      margin-top: 0;
+    }
+
+    .letter-card.expanded {
+      background: #fffdfd;
+      border-color: #f7cbd7;
+      box-shadow: 0 12px 30px rgba(230, 180, 195, 0.4);
+    }
+
+    .letter-card.expanded .letter-body {
+      max-height: 380px;
+      opacity: 1;
+      margin-top: 14px;
+    }
+
+    .watermark {
+      font-size: 11px;
+      color: #d1c4cb;
+      text-align: right;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    /* গান কন্ট্রোল বাটন */
+    .music-pill {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid #f0dee5;
+      border-radius: 20px;
+      padding: 5px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #7a6370;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+    .music-pill.playing {
+      color: #ff5277;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- অডিও ট্যাগ: আপনার গানের ফাইল নাম song.mp3 দিন বা অনলাইন লিঙ্ক বসান -->
+  <audio id="bgSong" loop preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- সাউন্ড বাটন -->
+  <div class="music-pill" id="musicToggle" onclick="toggleAudio()">
+    <span id="musicIcon">🎵</span>
+    <span id="musicStatus">গান বাজান</span>
+  </div>
+
+  <div class="app-container">
+
+    <!-- পেজ ১: Hey Cutiepie (আপনার ১ম ছবি) -->
+    <div class="screen active" id="screen1">
+      <div class="photo-frame frame-pink">
+        <span class="decor-heart decor-1">💖</span>
+        <span class="decor-heart decor-2">💖</span>
+        <span class="decor-flower-l">🌸</span>
+        <span class="decor-flower-r">🌸</span>
+        
+        <!-- [১ নম্বর ছবি]: এখানে আপনার ১ম ছবির নাম বা লিঙ্ক দিন -->
+        <img class="user-img-large" src="img1.jpg" alt="Photo 1">
+      </div>
+
+      <!-- টেক্সট পরিবর্তন করুন -->
+      <h2 class="title-cursive">Hey Cutiepie</h2>
+      <p class="subtitle-text">
+        Can we talk for a moment? There's something important I want to tell you.
+      </p>
+
+      <button class="btn-next" onclick="goToScreen(2)">
+        Continue 💜
+      </button>
+    </div>
+
+    <!-- পেজ ২: I know I hurt you... (আপনার ২য় ছবি) -->
+    <div class="screen" id="screen2">
+      <div class="photo-frame frame-purple">
+        <span class="decor-heart decor-1">💜</span>
+        <span class="decor-heart decor-2">💜</span>
+        
+        <!-- [২ নম্বর ছবি]: এখানে আপনার ২য় ছবির নাম বা লিঙ্ক দিন -->
+        <img class="user-img-large" src="img2.jpg" alt="Photo 2">
+      </div>
+
+      <!-- টেক্সট পরিবর্তন করুন -->
+      <p class="subtitle-text" style="font-size: 16px; margin: 15px 0 30px 0;">
+        I know I irritate you... and I've been feeling bad about it🫠.
+      </p>
+
+      <button class="btn-next" onclick="goToScreen(3)">
+        Next ➔
+      </button>
+    </div>
+
+    <!-- পেজ ৩: Little things I want to tell you -->
+    <div class="screen" id="screen3">
+      <h3 class="title-script">Little things I want to tell you...</h3>
+      <p class="instruction-text">Tap each one</p>
+
+      <div class="pill-list">
+        <div class="pill-item pill-1" onclick="revealPill(this)">
+          <span class="heart-icon">🧡</span>
+          <span class="secret-text">I messed up the time yesterday ... and I'm really sorry for that🙏.</span>
+        </div>
+
+        <div class="pill-item pill-2" onclick="revealPill(this)">
+          <span class="heart-icon">🩷</span>
+          <span class="secret-text">I promise I'll be better for you.</span>
+        </div>
+
+        <div class="pill-item pill-3" onclick="revealPill(this)">
+          <span class="heart-icon">💜</span>
+          <span class="secret-text">প্রেম করার সময় কোনো বন্ধুর ফোন ধরবো না প্রমিস🫡.</span>
+        </div>
+      </div>
+
+      <button class="btn-next" onclick="goToScreen(4)">
+        My message ➔
+      </button>
+    </div>
+
+    <!-- পেজ ৪: From my heart... (লাস্ট পেজের ছবি ও চিঠি) -->
+    <div class="screen" id="screen4">
+      <h3 class="title-script" style="margin-bottom: 12px;">From my heart...</h3>
+
+      <!-- দুটি পাশাপাশি ছবি (যেমন: আপনার ছবি ও পার্টনারের ছবি) -->
+      <div class="avatar-pair">
+        <div class="avatar-box">
+          <!-- [৩ নম্বর ছবি]: আপনার ছবি -->
+          <img src="img3.jpg" alt="My Photo">
+        </div>
+        <div class="avatar-box">
+          <!-- [৪ নম্বর ছবি]: পার্টনারের ছবি -->
+          <img src="img4.jpg" alt="Partner Photo">
+        </div>
+      </div>
+
+      <span class="tap-indicator">↓ Tap to see message ↓</span>
+
+      <!-- ক্লিক করলে কার্ডটি বড় হয়ে চিঠি বের হবে -->
+      <div class="letter-card" id="letterCard" onclick="toggleLetter()">
+        <div class="letter-title">
+          🌸 I'm Sorry 🌸
+        </div>
+        <div class="letter-body">
+          <p>
+            তোমাকে অপেক্ষা করানোর জন্য দুঃখীত।প্রেম করার সময় প্রেমিকা আগে ওসব বন্ধু সকালবেলা প্রমিস।যদিও তোমারে রাগাইতে মজাই লাগে কিন্তু রেগে বসে থাকলে ভালো লাগে না🙂.
+          </p>
+          <br>
+          <p>
+            তুমি আমার এই ২২ বছরের ছোট জীবনে পাওয়া সেরা গিফটের একটা।তোমাকে পারমানেন্ট না করা পর্যন্ত শান্তি নাই।তুমি যেভাবে কইবা য্যামনে কইবা ওমনেই তোমাকে ভালোবাসবো সারাজীবন প্রমিস।
+          </p>
+          <br>
+          <p>
+            আর হ্যা একটু পুতুপুতু ও করবো😶‍🌫️ 
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="watermark">Made with ❤️</div>
+  </div>
+
+  <script>
+    // ব্যাকগ্রাউন্ড ফ্লোটিং হার্ট তৈরি
+    function createFloatingHearts() {
+      const symbols = ['💖', '💕', '🌸', '✨', '💜'];
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'bg-heart';
+        heart.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+        heart.style.left = Math.random() * 95 + 'vw';
+        heart.style.animationDelay = (Math.random() * 6) + 's';
+        heart.style.fontSize = (Math.random() * 14 + 14) + 'px';
+        document.body.appendChild(heart);
+      }
+    }
+    createFloatingHearts();
+
+    // পেজ পরিবর্তন
+    function goToScreen(screenNumber) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const nextScreen = document.getElementById('screen' + screenNumber);
+      if (nextScreen) {
+        nextScreen.classList.add('active');
+      }
+      startAudioOnce();
+    }
+
+    // স্ক্রিন ৩: মেসেজ আনলক
+    function revealPill(element) {
+      element.classList.toggle('revealed');
+      startAudioOnce();
+    }
+
+    // স্ক্রিন ৪: চিঠি ওপেন/ক্লোজ
+    function toggleLetter() {
+      const card = document.getElementById('letterCard');
+      card.classList.toggle('expanded');
+      startAudioOnce();
+    }
+
+    // মিউজিক কন্ট্রোল
+    const audio = document.getElementById('bgSong');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicStatus = document.getElementById('musicStatus');
+    let hasStarted = false;
+
+    function startAudioOnce() {
+      if (!hasStarted) {
+        audio.play().then(() => {
+          hasStarted = true;
+          musicStatus.innerText = "গান চলছে";
+          musicToggle.classList.add('playing');
+        }).catch(() => {});
+      }
+    }
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+        musicStatus.innerText = "গান চলছে";
+        musicToggle.classList.add('playing');
+        hasStarted = true;
+      } else {
+        audio.pause();
+        musicStatus.innerText = "গান বন্ধ";
+        musicToggle.classList.remove('playing');
+      }
+    }
+  </script>
+</body>
+</html>
